@@ -73,4 +73,8 @@
   .todo-due-date {
     margin-left: 0;
   }
+  .checkbox-mobile {
+    width: 18px;
+    height: 18px;
+  }
 }
