@@ -1,0 +1,16 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<nav class="navbar navbar-dark custom-navbar mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/todos']">TODOS APP</a>
+    <ul class="navbar-nav mr-2">
+      <app-nav-user
+        [user]="currentUser$ | async"
+        (logout)="logout()"
+        *ngIf="currentUser$ | async"
+      ></app-nav-user>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

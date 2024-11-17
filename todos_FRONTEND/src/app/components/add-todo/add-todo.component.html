@@ -1,0 +1,47 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm" class="add-todo-form">
+  <div class="mb-3">
+    <label for="title" class="form-label">Titolo</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      [(ngModel)]="title"
+      name="title"
+      #titleModel="ngModel"
+      required
+    />
+    <div
+      *ngIf="titleModel.invalid && (titleModel.dirty || titleModel.touched)"
+      class="text-danger"
+    >
+      Il titolo è richiesto.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="dueDate" class="form-label">Data di Scadenza</label>
+    <input
+      type="date"
+      class="form-control"
+      id="dueDate"
+      [(ngModel)]="dueDate"
+      name="dueDate"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="assignedTo" class="form-label">Assegna a</label>
+    <select
+      id="assignedTo"
+      class="form-control"
+      [(ngModel)]="selectedUserId"
+      name="assignedTo"
+    >
+      <option [ngValue]="null">Nessuno</option>
+      <option *ngFor="let user of users" [ngValue]="user.id">
+        {{ user.fullName }}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+    Aggiungi
+  </button>
+</form>

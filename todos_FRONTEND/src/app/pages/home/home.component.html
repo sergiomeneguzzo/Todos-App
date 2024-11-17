@@ -1,0 +1,42 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<app-notification #notification></app-notification>
+
+<div class="container mt-4 home-container">
+  <h1 class="text-center app-title">Applicazione ToDo</h1>
+  <hr class="app-divider" />
+
+  <div class="text-end mb-3">
+    <button class="btn toggle-form-button" (click)="showForm = !showForm">
+      {{ showForm ? "Annulla" : "Aggiungi ToDo" }}
+    </button>
+  </div>
+
+  <app-add-todo *ngIf="showForm" (add)="addNewTodo($event)"></app-add-todo>
+
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="showCompleted"
+      [(ngModel)]="includeCompleted"
+      (change)="getTodos()"
+    />
+    <label class="form-check-label" for="showCompleted">
+      Mostra completati
+    </label>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="list-group">
+        <app-todo-card
+          *ngFor="let todo of TODOS"
+          [todo]="todo"
+          (check)="toggleTodoCompletion($event)"
+          (delete)="deleteTodo($event)"
+        ></app-todo-card>
+      </div>
+    </div>
+  </div>
+  <app-show-details></app-show-details>
+</div>

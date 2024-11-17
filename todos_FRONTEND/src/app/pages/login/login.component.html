@@ -1,0 +1,68 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<app-notification #notification></app-notification>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+      <div class="border rounded p-4 login-card">
+        <h3 class="text-center">Login</h3>
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="username"
+              id="email"
+              placeholder="Inserisci la tua email"
+            />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password</label>
+            <div class="input-group">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                class="form-control"
+                formControlName="password"
+                id="password"
+                placeholder="Inserisci la tua password"
+              />
+              <span
+                class="input-group-text"
+                (click)="togglePasswordVisibility('password')"
+              >
+                <i
+                  class="bi"
+                  [ngClass]="!passwordVisible ? 'bi-eye-slash' : 'bi-eye'"
+                ></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="text-center">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block mb-4"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
+          </div>
+
+          <div class="mt-3 text-center">
+            <p>
+              Non hai un account?
+              <a class="register-form" [routerLink]="['/register']"
+                >Registrati</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

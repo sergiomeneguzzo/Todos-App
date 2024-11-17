@@ -1,0 +1,37 @@
+<div class="todo-details-popup" *ngIf="isVisible">
+  <div class="popup-overlay" (click)="closePopup()"></div>
+  <div class="popup-content">
+    <h5>Dettagli ToDo</h5>
+    <p><strong>Titolo:</strong> {{ todo.title }}</p>
+    <p *ngIf="todo.dueDate">
+      <strong>Data:</strong> {{ todo.dueDate | date : "dd/MM/yyyy" }}
+    </p>
+    <div class="user-details">
+      <div class="user-info">
+        <strong>Creato da:</strong>
+        <div class="user-details-info">
+          <img
+            *ngIf="createdByPicture"
+            [src]="createdByPicture"
+            alt="Created by picture"
+            class="user-picture"
+          />
+          <span>{{ createdByName }}</span>
+        </div>
+      </div>
+      <div class="user-info">
+        <strong>Assegnato a:</strong>
+        <div class="user-details-info">
+          <img
+            *ngIf="assignedToPicture"
+            [src]="assignedToPicture"
+            alt="Assigned to picture"
+            class="user-picture"
+          />
+          <span>{{ assignedToName || "Nessuno" }}</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary" (click)="closePopup()">Chiudi</button>
+  </div>
+</div>

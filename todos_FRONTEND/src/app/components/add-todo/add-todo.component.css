@@ -1,0 +1,39 @@
+.add-todo-form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-todo-form .form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.add-todo-form .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.add-todo-form .text-danger {
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+.add-todo-form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.add-todo-form .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.add-todo-form .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}

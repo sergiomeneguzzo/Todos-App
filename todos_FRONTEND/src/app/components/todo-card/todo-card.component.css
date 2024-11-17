@@ -1,0 +1,76 @@
+.todo-card {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: auto;
+}
+
+.todo-card .todo-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-card .todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.todo-card .todo-actions input {
+  margin-right: 0.5rem;
+}
+
+.todo-card .todo-title {
+  font-size: 16px;
+}
+
+.todo-card .todo-due-date,
+.todo-card .todo-expired {
+  font-size: 14px;
+}
+
+.todo-card .badge {
+  font-size: 12px;
+}
+
+.todo-card .btn {
+  font-size: 14px;
+}
+
+.todo-card .btn-sm {
+  padding: 0.25rem 0.5rem;
+}
+
+.todo-card .app-assign {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.todo-due-date {
+  background-color: #e0f7fa;
+  color: #00796b;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+@media (max-width: 576px) {
+  .todo-checkbox-date {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .todo-actions .app-assign {
+    display: none !important;
+  }
+
+  .todo-due-date {
+    margin-left: 0;
+  }
+}

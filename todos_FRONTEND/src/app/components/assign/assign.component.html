@@ -1,0 +1,40 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="assignedTo" class="form-label">Assegna a:</label>
+        <select
+          id="assignedTo"
+          class="form-control"
+          [(ngModel)]="selectedUserId"
+          name="assignedTo"
+        >
+          <option [ngValue]="null">Nessuno</option>
+          <option *ngFor="let user of users" [ngValue]="user.id">
+            {{ user.fullName }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="saveAssignment(); modal.close('Save click')"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary" (click)="open(content)">Assegna</button>
