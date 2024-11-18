@@ -39,7 +39,7 @@
         class="checkbox-desktop d-none d-sm-block"
       />
       <button class="btn btn-danger btn-sm" (click)="showConfirmDialog = true">
-        Elimina
+        <i class="bi bi-trash"></i>
       </button>
       <app-assign
         *ngIf="!todo.assignedTo && isDesktop"

@@ -77,4 +77,14 @@
     width: 18px;
     height: 18px;
   }
+  .todo-title {
+    font-size: clamp(12px, 4vw, 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .todo-title {
+    font-size: 16px !important;
+  }
 }
