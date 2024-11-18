@@ -31,8 +31,15 @@ export class HomeComponent implements OnInit {
 
   getTodos(): void {
     this.isLoading = true;
-    this.todoService.list(this.includeCompleted).subscribe();
-    this.isLoading = false;
+    this.todoService.list(this.includeCompleted).subscribe(
+      () => {
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Errore nel recupero dei todo', error);
+        this.isLoading = false;
+      }
+    );
   }
 
   addNewTodo(newTodo: Todo): void {
