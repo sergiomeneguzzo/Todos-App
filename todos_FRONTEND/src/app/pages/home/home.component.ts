@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit {
   }
 
   toggleTodoCompletion(update: { id: string; completed: boolean }): void {
+    this.isLoading = true;
     const update$ = update.completed
       ? this.todoService.checkTodo(update.id)
       : this.todoService.uncheckTodo(update.id);
@@ -77,8 +78,12 @@ export class HomeComponent implements OnInit {
             expired: this.isTodoExpired(todo.dueDate),
           };
         }
+        this.isLoading = false;
       },
-      (error) => console.error("Errore nell'aggiornamento del todo", error)
+      (error) => {
+        console.error("Errore nell'aggiornamento del todo", error);
+        this.isLoading = false;
+      }
     );
   }
 
