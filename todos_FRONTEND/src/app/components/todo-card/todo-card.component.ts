@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { Todo } from '../../interfaces/todo.entity';
 import { TodosService } from '../../shared/todos.service';
-//import bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-todo-card',
@@ -17,6 +16,7 @@ import { TodosService } from '../../shared/todos.service';
 export class TodoCardComponent {
   TODOS: Todo[] = [];
   includeCompleted: boolean = false;
+  isLoading: boolean = false;
 
   @Input() todo!: Todo;
   @Output() check = new EventEmitter<{ id: string; completed: boolean }>();
@@ -32,13 +32,16 @@ export class TodoCardComponent {
   selectedTodo!: Todo;
 
   onCheck(): void {
+    this.isLoading = true;
     if (this.todo.id) {
       this.check.emit({
         id: this.todo.id,
         completed: !this.todo.completed,
       });
+      this.isLoading = false;
     } else {
       console.error('ID non definito per il ToDo');
+      this.isLoading = false;
     }
   }
   confirmDelete(): void {
